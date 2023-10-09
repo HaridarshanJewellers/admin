@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon"
+        href="https://media.discordapp.net/attachments/1157563323844403220/1157590820397010944/JNDKJW_.jpg?ex=651929f6&is=6517d876&hm=33f1b63191527426afa5860ad79214e0956fb9a6b9a8eeb94c03e2d57e0880de&=&width=1042&height=1042">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080710;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(#1845ad,
+                    #23a2f6);
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient(to right,
+                    #ff512f,
+                    #f09819);
+            right: -30px;
+            bottom: -80px;
+        }
+
+        form {
+            height: 520px;
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.13);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+        }
+
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        ::placeholder {
+            color: #e5e5e5;
+        }
+
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .social {
+            margin-top: 30px;
+            display: flex;
+        }
+
+        .social div {
+            background: red;
+            width: 150px;
+            border-radius: 3px;
+            padding: 5px 10px 10px 5px;
+            background-color: rgba(255, 255, 255, 0.27);
+            color: #eaf0fb;
+            text-align: center;
+        }
+
+        .social div:hover {
+            background-color: rgba(255, 255, 255, 0.47);
+        }
+
+        .social .fb {
+            margin-left: 25px;
+        }
+
+        .social i {
+            margin-right: 4px;
+        }
+    </style>
+    <div class="loader d-flex align-items-center justify-content-center" id="loader"
+        style="display: none  !important; width: 100vw; height: 100vh; background-color: rgba(128, 128, 128, 0.544); z-index: 10000; backdrop-filter: blur(10px); ">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div style="background-color: #080710;" id="log">
+        <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <form onsubmit="login(event)">
+            <h3>Login Here</h3>
+
+            <label for="username">Id</label>
+            <input type="text" placeholder="Enter your id here..." id="username">
+
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter password here..." id="password">
+
+            <button>Log In</button>
+        </form>
+    </div>
+
+
+
+    <div style="background-color: #D9E1FC; height: 100vh; width: 100vw; display: none  !important;"
+        class="d-flex justify-content-between align-item-center flex-column " id="main">
+        <div class="d-flex justify-content-center align-item-center flex-column">
+            <div class="w-100 d-flex justify-content-center text-white align-item-center "
+                style="background-color: #282828; ">
+                <div style="font-size: 1.8rem; font-weight: 600;" class="p-2">RATE ADMIN</div>
+            </div>
+            <div class="w-100 d-flex justify-content-center align-item-center">
+                <div class="d-flex justify-content-center align-item-center" id="status_live"
+                    style="background-color: rgba(0, 128, 0, 0.433); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; width: 30vw; border-bottom: 1px solid #282828;border-right: 1px solid #282828;border-left: 1px solid #282828; font-size: 1.5rem; font-weight: 500;">
+                    LIVE
+                </div>
+            </div>
+            <div class="d-flex  flex-row justify-content-center align-item-center pt-2">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" style="width: 4rem;height: 2rem;" type="checkbox" role="switch"
+                        id="myCheckbox">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-item-center w-100 " style="margin-bottom: 20rem;">
+            <div class="d-flex flex-column justify-content-center align-item-center " style="width: 80vw;">
+                <div class="d-flex flex-row gap-4 align-item-center  justify-content-center">
+                    <div class="mb-3" style="width: 50%">
+                        <label for="exampleInputEmail1" class="form-label">Gold Add</label>
+                        <input type="number" class="form-control" id="goldAdd" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3" style="width: 50%">
+                        <label for="exampleInputEmail1" class="form-label">Silver Add</label>
+                        <input type="number" class="form-control" id="silverAdd" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="d-flex flex-row gap-4 align-item-center justify-content-center">
+                    <div class="mb-3" style="width: 50%">
+                        <label for="exampleInputEmail1" class="form-label">Gold 22carat</label>
+                        <input type="number" class="form-control" id="goldtwentytwo" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3" style="width: 50%">
+                        <label for="exampleInputEmail1" class="form-label">Gold 20carat</label>
+                        <input type="number" class="form-control" id="goldtwenty" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3" style="width: 50%">
+                        <label for="exampleInputEmail1" class="form-label">Gold 18carat</label>
+                        <input type="number" class="form-control" id="goldeighteen" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="d-flex flex-row gap-4 align-item-center justify-content-center">
+                    <button onclick="updateParams()" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        const url = "https://script.google.com/macros/s/AKfycbz1lg69uX5-8CDNLUmNyQE4GPczqcP7zGJdwinL2Uu-CHp0j5pGfymU9Yqjtf9Z8XgJsQ/exec"
+
+        let can_show = null;
+        let gold_add = null
+        let silver_add = null
+        let gold_twentytwo = null
+        let gold_twenty = null
+        let gold_eighteen = null
+        let status = null
+
+        var checkbox = document.getElementById("myCheckbox");
+        var log = document.getElementById('log');
+
+
+        function login(event) {
+            // document.getElementById('loader').style.display = 'block';
+            event.preventDefault(); // Prevent
+            var id = document.getElementById('username').value
+            var pass = document.getElementById('password').value
+            fetch(url + '?api=login&id=' + id + '&pass=' + pass)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data[0].status === 'success') {
+
+                        // document.getElementById('loader').style.display = 'none ';
+
+                        localStorage.setItem('accessToken', data.data[0].token);
+                        document.getElementById('log').style.display = 'none';
+                        document.getElementById('main').style.display = 'block';
+
+                        fetchData();
+
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    // document.getElementById('loader').style.display = 'none';
+
+                });
+        }
+
+
+        function fetchData() {
+            var access = localStorage.getItem('accessToken');
+            // document.getElementById('loader').style.display = 'block';
+
+            fetch(url + "?api=params" + '&access=' + access)
+                .then(response => response.json())
+                .then(data => {
+                    gold_add = data.data[0].gold_add;
+                    silver_add = data.data[0].silver_add;
+                    gold_twentytwo = data.data[0].gold_twentytwo;
+                    gold_twenty = data.data[0].gold_twenty;
+                    gold_eighteen = data.data[0].gold_eighteen;
+                    can_show = data.data[0].can_show;
+                    document.getElementById("goldAdd").value = gold_add
+                    document.getElementById("silverAdd").value = silver_add
+                    document.getElementById("goldtwentytwo").value = gold_twentytwo
+                    document.getElementById("goldtwenty").value = gold_twenty
+                    document.getElementById("goldeighteen").value = gold_eighteen
+
+                    if (can_show === true) {
+                        checkbox.checked = true;
+
+                        updateStatus()
+                    } else {
+                        checkbox.checked = false;
+                        updateStatus()
+                    }
+                    // Update the content of HTML elements
+                    document.getElementById("goldPrice").textContent = gold_add;
+                    document.getElementById("silverPrice").textContent = silver_add;
+                    // document.getElementById('loader').style.display = 'none';
+
+
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    // document.getElementById('loader').style.display = 'none';
+
+
+                });
+        }
+
+
+
+        // Function to update the text and color based on the checkbox state
+        function updateStatus() {
+            if (checkbox.checked) {
+                document.getElementById("status_live").innerText = "LIVE";
+                document.getElementById("status_live").style.backgroundColor = 'rgba(0, 128, 0, 0.433)';
+                status = false;
+            } else {
+                document.getElementById("status_live").innerText = "NOT LIVE";
+                document.getElementById("status_live").style.backgroundColor = 'rgba(128, 0, 0, 0.433)';
+                status = true;
+            }
+        }
+
+        // Add an event listener to the checkbox for the "change" event
+        checkbox.addEventListener("change", function () {
+            updateStatus();
+        });
+
+
+        updateStatus();
+        // fetchData();
+
+
+
+        function updateGoogleSheet() {
+            var checkbox = document.getElementById("myCheckbox").value;
+            var access = localStorage.getItem('accessToken');
+
+            fetch(url + '?api=status&canshow=' + status + '&access=' + access)
+                .then(response => response.json())
+                .then(data => {
+                    fetchData()
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    fetchData()
+                });
+        }
+
+
+        function updateParams() {
+            var checkbox = document.getElementById("myCheckbox").value;
+            var gold_add = document.getElementById("goldAdd").value
+            var silver_add = document.getElementById("silverAdd").value
+            var gold_twentytwo = document.getElementById("goldtwentytwo").value
+            var gold_twenty = document.getElementById("goldtwenty").value
+            var access = localStorage.getItem('accessToken');
+            var gold_eighteen = document.getElementById("goldeighteen").value
+
+            fetch(url + '?api=update&goldadd=' + gold_add + '&silveradd=' + silver_add + '&goldtwentytwo=' + gold_twentytwo + '&goldtwenty=' + gold_twenty + '&goldeighteen=' + gold_eighteen + '&access=' + access)
+                .then(response => response.json())
+                .then(data => {
+                    fetchData()
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    fetchData()
+                });
+        }
+
+        document.getElementById("myCheckbox").addEventListener("input", updateGoogleSheet);
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
